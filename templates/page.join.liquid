@@ -1,0 +1,131 @@
+<!-- /templates/page.join.liquid -->
+
+<div class="break-bar"></div>
+
+
+<div class="grid text-center">
+
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+    <h1>{{ page.title }}</h1>
+
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+  </div>
+</div>
+<div class="grid mt1 text-center">
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+    <div class="grid">
+      <div class="grid__item large--one-half medium--one-half small--one-whole text-center">
+      
+        <div class="card card__join kitchen">
+          
+          {% if settings.join_kitchen_title %}
+            <h4>{{ settings.join_kitchen_title }}</h4>
+          {% else %}
+            <h4>Kitchen Wizards</h4>
+          {% endif %}
+            <img src="{{ 'kitchen_team.png' | asset_img_url: '450x200', crop: 'center' }}" alt="Kitchen Team">
+        </div>
+      </div>
+      <div class="grid__item large--one-half medium--one-half small--one-whole text-center">  
+        <div class="card card__join delivery">
+          
+          {% if settings.join_delivery_title %}
+            <h4>{{ settings.join_delivery_title }}</h4>
+          {% else %}
+            <h4>Delivery Pelicans</h4>
+          {% endif %}
+            <img src="{{ 'driver_team.png' | asset_img_url: '450x200', crop: 'center' }}" alt="Delivery Team">
+        </div>
+      </div>
+    </div> 
+  </div>
+</div> 
+<div class="grid text-center">
+    <div class="grid__item large--two-thirds push--large--one-sixth">
+      <div class="form-vertical">
+      {% form 'contact' %}
+        
+        {% comment %}
+          Successful message
+        {% endcomment %}
+        {% if form.posted_successfully? %}
+          <p class="note form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="formWrap">
+        <div class="text-left">
+          <div class="jobDesc"></div>
+        </div>
+        {% assign name_attr = 'JobForm' | t | handle %}
+
+        <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+        <input type="text" id="ContactFormName" class="input-full" name="contact[Name]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+        <label for="ContactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+        <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+        {% assign name_attr = 'contact.form.phone' | t | handle %}
+        <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+        <label for="ContactFormHow" class="hidden-label">How did you find out about us</label>
+        <input id="ContactFormHow" class="input-full" name="contact[referer]" placeholder="How did you hear about us" value="">
+
+        <div class="roleSpecific">
+
+        </div>
+
+        <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[why]" placeholder="Why would you like the role">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+        <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+        <br>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<script>
+  $( document ).ready(function() {
+
+    var form = $('.formWrap');
+    var delivery = $('.card__join.delivery');
+    var kitchen = $('.card__join.kitchen');
+    var jobDesc = $('.jobDesc');
+    var roleSpecific = $('.roleSpecific');
+    // hide form
+    form.hide();  
+
+    $('.card__join').click(function(){
+      form.slideDown();
+      if ($(this).hasClass('kitchen')) {
+        $(this).removeClass('fade');
+        var kichenDesc = "{{ settings.join_kitchen_desc}}"; 
+        jobDesc.html('');
+        jobDesc.append('<p>'+kichenDesc+'</p>');
+        delivery.addClass('fade');
+        roleSpecific.html('');
+        roleSpecific.append('<label for="ContactFormKitchen" class="hidden-label">Any previous kitchen experience</label><input id="ContactFormKitchen" class="input-full" name="contact[kitchen-experience]" placeholder="Any previous kitchen experience" value="">');
+      } else {
+        $(this).removeClass('fade');
+        var deliveryDesc = "{{ settings.join_delivery_desc}}"; 
+        jobDesc.html('');
+        jobDesc.append('<p>'+deliveryDesc+'</p>');
+        kitchen.addClass('fade');
+        roleSpecific.html('');
+        roleSpecific.append('<label for="ContactFormTransport" class="hidden-label">Do you have a car and/or bike</label><input id="ContactFormTransport" class="input-full" name="contact[transport]" placeholder="Do you have a car and/or bike" value=""><label for="ContactFormDelivery" class="hidden-label">Any previous delivery roles</label><input id="ContactFormDelivery" class="input-full" name="contact[delivery-experience]" placeholder="Any previous delivery roles" value="">');
+
+      }
+
+    });
+
+});
+</script>

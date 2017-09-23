@@ -1,0 +1,269 @@
+{% if settings.enable_location %}
+<section id="location" class="full-width bg-white pb3 pt3">
+  <div class="grid-uniform">
+    
+    <div class="grid__item large--one-whole medium--one-whole small--one-whole">
+      <h2 class="txt-green mb0">{{ settings.location_title }}</h2>
+      <h3 class="mb0">{{ settings.location_h3 }}</h3>
+      <h4 class="mb1">{{ settings.location_h4 }}</h4>
+      <p>{{ settings.location_body }}</p>
+    </div>
+
+    <div class="grid__item large--one-whole medium--one-whole  small--one-whole">
+      <div id="mapUWE" class="mt2 mb1"></div>
+    </div>
+
+    <div class="grid__item large--one-whole medium--one-whole small--one-whole">
+        
+        <h4 class="mt1">Do we serve your area?</h4>
+        <div class="large--one-half medium--one-half small--one-half">
+          
+            <form action="http://pelico.eu.meteorapp.com/api/postcode/" method="post" id="postcodeChecker" name="postcodeChecker" target="_blank" class="input-group">
+                <div id="postcodeChecker-error-message"></div>
+                <input type="postcode" placeholder="postcode" name="postcode" class="required postcode" id="postcodeChecker_postcode">
+                <input type="submit" class="btn" name="subscribe" id="postcodeChecker_submit" value="Check postcode">
+            </form>
+        </div>
+    </div>
+  </div>  
+</section>
+
+<script>
+  $( document ).ready(function() {
+
+    var errorMessage = $('#postcodeChecker-error-message');
+    var btn = $('#postcodeChecker_submit');
+    var form = $('#postcodeChecker');
+    var input = $('#postcodeChecker_postcode');
+    var message;      
+
+    console.log(btn);
+    btn.click(function(e){
+      console.debug(e);
+      e.preventDefault();
+
+      var inputVal = input.val().replace(" ","");;
+      // 'Please make sure all fields are completed'
+
+      if (inputVal == "" ) {
+        message = "Please enter a postcode";
+        errorMessage.text(message).slideDown();
+      } else if ( inputVal.length < 6){
+        message = "Please enter a full postcode";
+        errorMessage.text(message).slideDown();
+      } else if ( inputVal.length >= 6 ) {
+        console.log([form]);
+
+        var url = form[0].action + inputVal;
+
+        console.log(url);
+
+        $.ajax({
+          method: "GET",
+          url: url,
+        })
+          .done(function( msg ) {
+              
+              console.log(msg);
+
+              if (msg == false ) {
+                message = "Sorry, we don't currently serve " + inputVal;
+                errorMessage.css('background', '#f95959');
+                errorMessage.text(message).slideDown();
+              } else {
+                message = "Congratulations! We serve " + inputVal;
+                errorMessage.css('background', '#459149');
+                errorMessage.text(message).slideDown();
+              }
+
+          });
+
+
+
+      }
+
+
+    })
+      
+  });
+</script>
+
+<script>
+  var mapUWE;
+  var boundaryColor = '#ffa500';
+
+  function initMaps() {
+
+    mapUWE = new google.maps.Map(document.getElementById('mapUWE'), {
+      center: {lat: 51.500648, lng: -2.552675},
+      zoom: 13,
+      scrollwheel: false,
+      // navigationControl: false,
+      mapTypeControl: false,
+      // scaleControl: true,
+      // draggable: false,
+      // disableDefaultdUI: true,
+      styles: [{
+      "stylers": [
+        { hue: "#459149" }, { saturation: 10 }]},
+        { 
+          featureType: "water", 
+          stylers: [{ color: "#edffea" }] 
+        }, 
+        { 
+          featureType: "all", 
+          elementType: "labels", 
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "administrative",
+          elementType: "labels", 
+          stylers: [{ visibility: "on" }]
+        }, 
+        {
+          featureType: "road",
+          elementType: "all",
+          stylers: [{ visibility: "on" }] 
+        },
+        {
+          featureType: "road.local",
+          elementType: "all",
+          stylers: [{ visibility: "on" }] 
+        },
+        {
+          featureType: "poi.school",
+          elementType: "all",
+          stylers: [{ visibility: "on" }] 
+        }, 
+        { 
+          featureType: "transit", 
+          elementType: "all",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    });
+
+    drawUWE();
+  };
+
+
+  function drawUWE() {
+    // City area coords 
+    var uweCoords = [
+               {lng: -2.543635368347168, lat: 51.499740196831546},
+               {lng: -2.5435495376586914, lat: 51.4990723023823},
+               {lng: -2.543206214904785, lat: 51.49778991760289},
+               {lng: -2.5424766540527344, lat: 51.49685482262109},
+               {lng: -2.5423049926757812, lat: 51.495518939368395},
+               {lng: -2.5419616699218746, lat: 51.494156298116394},
+               {lng: -2.541661262512207, lat: 51.49314097030879},
+               {lng: -2.542262077331543, lat: 51.492900494621004},
+               {lng: -2.5426912307739253, lat: 51.4938623897609},
+               {lng: -2.543678283691406, lat: 51.493328006077846},
+               {lng: -2.544279098510742, lat: 51.49316768975135},
+               {lng: -2.5450515747070312, lat: 51.492259219918466},
+               {lng: -2.5459957122802734, lat: 51.492553138610226},
+               {lng: -2.5468969345092773, lat: 51.49282033577651},
+               {lng: -2.5461244583129883, lat: 51.49370207531374},
+               {lng: -2.5459957122802734, lat: 51.49418301696384},
+               {lng: -2.546811103820801, lat: 51.49423645461173},
+               {lng: -2.5484848022460938, lat: 51.49391582778466},
+               {lng: -2.5501585006713867, lat: 51.4936753561844},
+               {lng: -2.5505876541137695, lat: 51.49394254677304},
+               {lng: -2.55033016204834, lat: 51.49490441992498},
+               {lng: -2.5501155853271484, lat: 51.49599986184962},
+               {lng: -2.5504159927368164, lat: 51.49658764910268},
+               {lng: -2.5529050827026367, lat: 51.49640062670799},
+               {lng: -2.554621696472168, lat: 51.49621360354591},
+               {lng: -2.5553083419799805, lat: 51.494637234974235},
+               {lng: -2.5560379028320312, lat: 51.49391582778466},
+               {lng: -2.5586986541748047, lat: 51.49303409238195},
+               {lng: -2.558891773223877, lat: 51.493114250850574},
+               {lng: -2.5595784187316895, lat: 51.49314097030879},
+               {lng: -2.5603508949279785, lat: 51.49347496221514},
+               {lng: -2.5606942176818848, lat: 51.49371543487252},
+               {lng: -2.5612735748291016, lat: 51.494129579253276},
+               {lng: -2.560887336730957, lat: 51.494877701500364},
+               {lng: -2.560758590698242, lat: 51.495438785128194},
+               {lng: -2.5622177124023438, lat: 51.49591970845512},
+               {lng: -2.5632476806640625, lat: 51.4968815398868},
+               {lng: -2.5635480880737305, lat: 51.49760290014123},
+               {lng: -2.563290596008301, lat: 51.498190666722394},
+               {lng: -2.5630760192871094, lat: 51.49867156101467},
+               {lng: -2.562990188598633, lat: 51.4997134812415},
+               {lng: -2.5624322891235347, lat: 51.50000735187072},
+               {lng: -2.560973167419433, lat: 51.50048822699484},
+               {lng: -2.559642791748047, lat: 51.501022526737486},
+               {lng: -2.55856990814209, lat: 51.50163696369762},
+               {lng: -2.5583982467651367, lat: 51.50246510475389},
+               {lng: -2.5576257705688477, lat: 51.503400084633526},
+               {lng: -2.5568103790283203, lat: 51.50385421079633},
+               {lng: -2.556123733520508, lat: 51.50428161952125},
+               {lng: -2.5559520721435547, lat: 51.504869299972306},
+               {lng: -2.5559520721435547, lat: 51.50561724594832},
+               {lng: -2.5558662414550777, lat: 51.50605799407808},
+               {lng: -2.5560593605041504, lat: 51.50635182379608},
+               {lng: -2.555522918701172, lat: 51.50713981232172},
+               {lng: -2.554771900177002, lat: 51.50768738954293},
+               {lng: -2.5541281700134277, lat: 51.508341802467896},
+               {lng: -2.5534844398498535, lat: 51.50892943055412},
+               {lng: -2.552669048309326, lat: 51.509370146645104},
+               {lng: -2.552175521850586, lat: 51.50967730988437},
+               {lng: -2.5513172149658203, lat: 51.509837568143645},
+               {lng: -2.5500082969665523, lat: 51.50997111626239},
+               {lng: -2.546381950378418, lat: 51.50981085847289},
+               {lng: -2.546660900115967, lat: 51.50894278564982},
+               {lng: -2.546210289001465, lat: 51.507914431826606},
+               {lng: -2.545866966247558, lat: 51.50716652355835},
+               {lng: -2.5474977493286133, lat: 51.507059678517834},
+               {lng: -2.5478410720825195, lat: 51.506445314672646},
+               {lng: -2.5482702255249023, lat: 51.50569738228904},
+               {lng: -2.5484418869018555, lat: 51.50521656213085},
+               {lng: -2.546725273132324, lat: 51.50510971251776},
+               {lng: -2.5456953048706055, lat: 51.505083000075366},
+               {lng: -2.5447940826416016, lat: 51.5050562876173},
+               {lng: -2.543935775756836, lat: 51.50521656213085},
+               {lng: -2.543163299560547, lat: 51.505243274494944},
+               {lng: -2.5417041778564453, lat: 51.50543026060529},
+               {lng: -2.540888786315918, lat: 51.505537109466715},
+               {lng: -2.5402021408081055, lat: 51.505804230524056},
+               {lng: -2.5394725799560547, lat: 51.50604463813678},
+               {lng: -2.538914680480957, lat: 51.50623162095866},
+               {lng: -2.5387001037597656, lat: 51.505724094371274},
+               {lng: -2.5392580032348633, lat: 51.5049494376284},
+               {lng: -2.5391721725463867, lat: 51.50446860957782},
+               {lng: -2.538571357727051, lat: 51.50361379162682},
+               {lng: -2.538013458251953, lat: 51.50281238523426},
+               {lng: -2.538270950317383, lat: 51.501797250237836},
+               {lng: -2.5388288497924805, lat: 51.501369818211096},
+               {lng: -2.5385284423828125, lat: 51.50046151184328},
+               {lng: -2.538485527038574, lat: 51.499847059035126},
+               {lng: -2.538485527038574, lat: 51.499366177145816},
+               {lng: -2.5391721725463867, lat: 51.49901887040353},
+               {lng: -2.539386749267578, lat: 51.499847059035126},
+               {lng: -2.540502548217773, lat: 51.49982034350774},
+               {lng: -2.540116310119629, lat: 51.49877842572391},
+               {lng: -2.5407600402832027, lat: 51.49891200625809},
+               {lng: -2.541317939758301, lat: 51.499660050014434},
+               {lng: -2.542133331298828, lat: 51.500060782690625},
+               {lng: -2.5438499450683594, lat: 51.499847059035126}
+            ];
+
+    // Construct the uwe polygon
+    var uwe = new google.maps.Polygon({
+      paths: uweCoords,
+      strokeColor: boundaryColor,
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      fillColor: boundaryColor,
+    });
+
+    uwe.setMap(mapUWE);
+
+  }
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEt7P0TdRfUVfhbCaQ1B4LYnFVI1AzJGM&callback=initMaps&v=3"
+async defer></script>
+{% endif %}

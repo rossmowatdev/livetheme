@@ -1,0 +1,85 @@
+<section id="menu" class="menu__alt-1">
+	<div class="menu__header">
+		<h2 class="menu__title txt-green">{{ 'homepage.sections.frontpage_title' | t }}</h2>
+    <h4 class="menu__service-time">Serving 12pm 'till 1pm</h4>
+		<h4 class="menu__delivery-price">Free delivery for all!</h4>
+	</div>
+
+	<div class="grid-uniform">
+
+	  {% for product in collections.frontpage.products %}
+
+	    {% assign grid_item_width = 'large--one-half' %}
+	    {% include 'product-grid-item' %}
+
+	  {% endfor %}
+
+	</div>
+  
+  {% if settings.desserts_enable %}
+  <article class="drinks menu-bar">
+    <div class="menu-bar__header">
+      <div class="title">
+        <h3>Drinks</h3>
+      </div>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform pb3">
+        {% for product in collections.drinks.products %}
+
+          {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}        
+      </div>
+    </div>
+  </article>
+  {% endif %} 
+
+  {% if settings.sides %}
+  <article class="sides menu-bar">
+    <div class="menu-bar__header">
+      <h3 class="title">Sides</h3>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform">
+        {% for product in collections.sides.products %}
+
+          {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}
+      </div>  
+    </div>
+  </article>
+  {% endif %}
+
+  {% if settings.desserts_enable %}
+  <article class="desserts menu-bar">
+    <div class="menu-bar__header">
+      <div class="title">
+        <h3>Desserts</h3>
+      </div>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform">
+        {% for product in collections.desserts.products %}
+
+          {% assign grid_item_width = 'large--one-quarter medium--one-half small--one-whole' %}
+          {% include 'product-grid-item-tall' %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endif %}
+</section>

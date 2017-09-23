@@ -1,0 +1,291 @@
+<section id="landing" role="banner">
+<div class="background-image"></div>
+  <article class="hero">
+    <div class="v-align-wrap z-100">
+      <div class="v-align">
+        <h1 class="txt-gradient">{{ settings.landing_tagline }}</h1>
+        {% if settings.landing_btn_enable %}
+          <a href="{{settings.landing_btn_link}}" {% if settings.landing_video_enable %}data-lity{% endif %} class="btn">{{ settings.landing_btn_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+  <article id="about" class="about">
+    <div class="v-align-wrap z-100">
+      <div class="v-align">
+        <h2 class="txt-green">{{ settings.about_title }}</h2>
+        <h4>{{ settings.about_sub_title }}</h4>
+        <p>{{ settings.about_body }}</p>
+        <a href="{{ settings.about_cta_1_link }}" class="btn mt1">{{ settings.about_cta_1_link_text }}</a>
+        <a href="{{ settings.about_cta_2_link }}" {% if settings.landing_video_enable %}data-lity{% endif %} class="btn btn--secondary mt1">{{ settings.about_cta_2_link_text }}</a>
+      </div>
+    </div>
+  </article>
+  {% if settings.enable_hiw %}
+  <article id="how-it-works" class="how-it-works">
+    <div class="v-align-wrap z-100">
+      <div class="v-align">
+        
+        <h2 class="txt-green">{{ settings.hiw_title }}</h2>
+        
+        <div class="grid">	
+          
+          <div class="grid__item large--one-third medium-one-whole small--one-whole">
+            <div class="card card__feature card__transparent text-center medium--text-left small--text-left">
+              
+              <div class="card__title">
+                <h3>{{ 'order.svg' | asset_url | img_tag }}</i> {{ settings.hiw_1_title }}</h3>
+              </div>
+              
+              <div class="card__body">
+                {{ settings.hiw_1_body }}
+              </div>
+              
+            </div>
+          </div>
+          <div class="grid__item large--one-third medium-one-whole small--one-whole">
+            <div class="card card__feature card__transparent text-center medium--text-left small--text-left">
+              
+              <div class="card__title">
+                <h3>{{ 'tree.svg' | asset_url | img_tag }} {{ settings.hiw_2_title }}</h3>
+              </div>
+              
+              <div class="card__body">
+                {{ settings.hiw_2_body }}
+              </div>
+            </div>
+          </div>
+          <div class="grid__item large--one-third medium-one-whole small--one-whole">
+            <div class="card card__feature card__transparent text-center medium--text-left small--text-left">
+              
+              <div class="card__title">
+                <h3>{{ 'cutlery.svg' | asset_url | img_tag }} {{ settings.hiw_3_title }}</h3>
+              </div>
+              
+              <div class="card__body">
+                {{ settings.hiw_3_body }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <a href="{{ settings.hiw_link }}" class="btn mt1">{{ settings.hiw_link_text }}</a>
+
+      </div>
+    </div>
+  </article>
+  {% comment %}
+  To do: Find better implimentation of these
+
+  <div id="abouthow-button-wrap" class="z-100">
+    <a href="{{ settings.abouthow_btn_link }}" class="btn">
+      {{ settings.abouthow_btn_text }}
+    </a>
+
+    <a href="{{ settings.abouthow_btn_secondary_link }}" class="btn btn__white-border">
+      {{ settings.abouthow_btn_secondary_text }}
+    </a>
+  </div> 
+  {% endcomment %}
+  
+  
+</section>
+
+{% include 'location' %}
+
+{% endif %}
+
+{% include 'menu-block' %}
+
+{% include 'suppliers' %}
+
+<hr>
+
+{% if settings.enable_testimonial %}
+<section id="testimonials" class="pt3">
+  <div class="grid-uniform">
+
+    <div class="grid__item large--one-half medium--one-whole small--one-whole">
+      <div class="owl-carousel owl-theme">
+        <div class="testimonial">
+        <div class="grid">
+          <div class="grid__item one-quarter">
+          <div class="image" style="background-image:url({{ shop.metafields['Testimonial-1.Testim']['Image'] }});"></div>
+          </div>
+          <div class="grid__item three-quarters small--one-whole">
+            <div class="details">
+              <h4 class="name mb0">{{ shop.metafields["Testimonial-1.Testim"]["Name"] }}</h4>
+              <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-1.Testim"]["Company-&-Position"] }}</h5>
+            </div>
+          </div>  
+        </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-1.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-2.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-2.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-2.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-2.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-3.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-3.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-3.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-3.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-4.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-4.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-4.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-4.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-5.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-5.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-5.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-5.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-6.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-6.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-6.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-6.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+        
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-7.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-7.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-7.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-7.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+      
+        <div class="testimonial">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+            <div class="image" style="background-image:url({{ shop.metafields['Testimonial-8.Testim']['Image'] }});"></div>
+            </div>
+            <div class="grid__item three-quarters small--one-whole">
+              <div class="details">
+                <h4 class="name mb0">{{ shop.metafields["Testimonial-8.Testim"]["Name"] }}</h4>
+                <h5 class="job-title fwn mb0">{{ shop.metafields["Testimonial-8.Testim"]["Company-&-Position"] }}</h5>
+              </div>
+            </div>  
+          </div>
+         <blockquote class="testimonial-content mt2">
+            {{ shop.metafields["Testimonial-8.Testim"]["Testimonial"] }}
+          </blockquote>
+        </div>
+
+      </div>  <!-- End Carousel -->
+    </div>
+   
+    
+    <div class="grid__item large--one-half medium--one-whole small--one-whole">
+      <h3 class="txt-green">{{ settings.testimonial_title }}</h3>
+      <p>{{ settings.testimonial_body }}</p>
+    </div>
+
+  </div>
+    
+  
+</section>
+{% endif %}
+
+
+<script>
+  $(document).ready(function() {
+    var about = new Waypoint({
+      element: document.getElementById('about'),
+      handler: function() {
+        $('#landing').toggleClass('is-scrolled');
+        $('#abouthow-button-wrap').toggleClass('active');
+      },
+      offset: 200
+    })
+  });
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+      nav: true,
+      loop: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      navText:[
+          '<i class="h3 fa fa-caret-left" aria-hidden="true"></i>',
+          '<i class="h3 fa fa-caret-right" aria-hidden="true"></i>'
+        ],
+      items: 1,
+      dots: false,
+    });
+  });
+</script>

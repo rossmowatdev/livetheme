@@ -1,0 +1,145 @@
+<!-- /snippets/product-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--one-half medium--one-whole' %}
+{% endunless %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+<div class="grid__item {{ grid_item_width }}">
+  
+  <div class="card card__product">
+    
+
+    
+    {% assign low_stock_alert = settings.low_stock_alert %}
+    {% if product.variants.first.inventory_quantity < low_stock_alert and product.variants.first.inventory_quantity > 0 %}
+      <div class="low-stock-alert">
+        {{product.variants.first.inventory_quantity}} left  
+      </div>
+    {% endif %}
+
+    <a href="{{ product.url | within: collection }}" class="grid__image" style="background-image:url({{ product.featured_image.src | img_url: '1000x' }});"">
+    </a>
+    <div class="tags">
+      {% for tag in product.tags %}
+    <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <div class="card__body">
+
+      <h4 class="title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h4>
+      
+      
+      <a class="leader" href="{{ product.url | within: collection }}">{{ product.metafields["global"]["Sub-title"] }}</a>
+
+       {% if sold_out %}
+         <div class="btn btn--sold-out btn--disabled">
+           {{ 'products.product.sold_out' | t }}
+         </div>
+       {% else %}
+          {% comment %}
+            ID addToCartForm is a selector for the ajax cart plugin
+          {% endcomment %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+
+            <select name="id" id="productSelect" class="product-single__variants visually-hidden">
+              
+              <option value="locationSelection" data-sku="XX" disabled="disabled" selected="selected">Select location</option>
+
+              {% for variant in product.variants %}
+                {% if variant.available %}
+
+                  <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" selected="true">{{ variant.title }}</option>
+
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+
+            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            <span id="ProductPrice" class="h2 visually-hidden" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+              {{ current_variant.price | money }}
+            </span>
+
+            {% if product.compare_at_price_max > product.price %}
+              <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+              <p id="ComparePrice">
+                {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+              </p>
+            {% endif %}
+
+    
+            <button type="submit" name="add" id="AddToCart" class="btn">
+              <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+            </button>
+          </form>
+        {% endif %}
+
+        {% if on_sale %}
+          <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+          <br><s>{{ product.compare_at_price | money }}</s>
+        {% endif %}
+    
+    <h5 class="price">
+    {{products.inventory_quantity}}
+      {% comment %}
+        You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+        if your variants have different prices.
+      {% endcomment %}
+      {% if on_sale %}
+        {% if product.price_varies %}
+          {% assign sale_price = product.price | money %}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {% else %}
+          <strong>{{ 'products.product.on_sale' | t }}</strong>
+          {{ product.price | money }}
+        {% endif %}
+      {% else %}
+        {% if product.price_varies %}
+          {% assign price = product.price | money %}
+          {{ 'products.general.from_text_html' | t: price: price }}
+        {% else %}
+          {{ product.price | money }}
+        {% endif %}
+      {% endif %}
+    </h5> 
+    
+    </div>
+  </div>
+
+</div>

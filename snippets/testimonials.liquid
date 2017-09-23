@@ -1,0 +1,138 @@
+{% if settings.enable_suppliers %}
+<section id="suppliers" class="mt3">
+	<h2 class="text-center">Our Suppliers</h2>
+	<div class="owl-carousel owl-theme">
+		<div class="supplier grid">
+			<div class="grid__item large--one-whole">
+				<div class="image mb1">
+					<img src="{{ page.metafields['Supplier-1.Supplier']['supplier-image'] }}" alt="{{ page.metafields['Supplier-1.Supplier']['supplier-name'] }}">
+				</div>
+			</div>	
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<div class="name h3">
+					{{ page.metafields["Supplier-1.Supplier"]["supplier-name"] }}
+				</div>
+				<div class="description">
+					{{ page.metafields["Supplier-1.Supplier"]["supplier-description"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<h3>What we source</h3>
+				<div class="source-list">
+					{{ page.metafields["Supplier-1.Supplier"]["supplier-source-list"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-whole mt2">
+				<blockquote>
+					{{ page.metafields["Supplier-1.Supplier"]["supplier-testimonial"] }}
+				</blockquote>
+			</div>	
+		</div>
+		<div class="supplier grid">
+			<div class="grid__item large--one-whole">
+				<div class="image mb1">
+					<img src="{{ page.metafields['Supplier-2.Supplier']['supplier-image'] }}" alt="{{ page.metafields['Supplier-2.Supplier']['supplier-name'] }}">
+				</div>
+			</div>	
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<div class="name h3">
+					{{ page.metafields["Supplier-2.Supplier"]["supplier-name"] }}
+				</div>
+				<div class="description">
+					{{ page.metafields["Supplier-2.Supplier"]["supplier-description"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<h3>What we source</h3>
+				<div class="source-list">
+					{{ page.metafields["Supplier-2.Supplier"]["supplier-source-list"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-whole mt2">
+				<blockquote>
+					{{ page.metafields["Supplier-2.Supplier"]["supplier-testimonial"] }}
+				</blockquote>
+			</div>	
+		</div>
+		<div class="supplier grid">
+			<div class="grid__item large--one-whole">
+				<div class="image mb1">
+					<img src="{{ page.metafields['Supplier-3.Supplier']['supplier-image'] }}" alt="{{ page.metafields['Supplier-3.Supplier']['supplier-name'] }}">
+				</div>
+			</div>	
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<div class="name h3">
+					{{ page.metafields["Supplier-3.Supplier"]["supplier-name"] }}
+				</div>
+				<div class="description">
+					{{ page.metafields["Supplier-3.Supplier"]["supplier-description"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<h3>What we source</h3>
+				<div class="source-list">
+					{{ page.metafields["Supplier-3.Supplier"]["supplier-source-list"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-whole mt2">
+				<blockquote>
+					{{ page.metafields["Supplier-3.Supplier"]["supplier-testimonial"] }}
+				</blockquote>
+			</div>	
+		</div>
+		<div class="supplier grid">
+			<div class="grid__item large--one-whole">
+				<div class="image mb1">
+					<img src="{{ page.metafields['Supplier-4.Supplier']['supplier-image'] }}" alt="{{ page.metafields['Supplier-4.Supplier']['supplier-name'] }}">
+				</div>
+			</div>	
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<div class="name h3">
+					{{ page.metafields["Supplier-4.Supplier"]["supplier-name"] }}
+				</div>
+				<div class="description">
+					{{ page.metafields["Supplier-4.Supplier"]["supplier-description"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<h3>What we source</h3>
+				<div class="source-list">
+					{{ page.metafields["Supplier-4.Supplier"]["supplier-source-list"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-whole mt2">
+				<blockquote>
+					{{ page.metafields["Supplier-4.Supplier"]["supplier-testimonial"] }}
+				</blockquote>
+			</div>	
+		</div>
+		<div class="supplier grid">
+			<div class="grid__item large--one-whole">
+				<div class="image mb1">
+					<img src="{{ page.metafields['Supplier-5.Supplier']['supplier-image'] }}" alt="{{ page.metafields['Supplier-5.Supplier']['supplier-name'] }}">
+				</div>
+			</div>	
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<div class="name h3">
+					{{ page.metafields["Supplier-5.Supplier"]["supplier-name"] }}
+				</div>
+				<div class="description">
+					{{ page.metafields["Supplier-5.Supplier"]["supplier-description"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-half medium--one-half small--one-whole">
+				<h3>What we source</h3>
+				<div class="source-list">
+					{{ page.metafields["Supplier-5.Supplier"]["supplier-source-list"] }}
+				</div>
+			</div>
+			<div class="grid__item large--one-whole mt2">
+				<blockquote>
+					{{ page.metafields["Supplier-5.Supplier"]["supplier-testimonial"] }}
+				</blockquote>
+			</div>	
+		</div>
+
+	</div>
+</section>
+{% endif %}

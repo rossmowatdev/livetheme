@@ -1,0 +1,758 @@
+[
+  {
+    "name": "theme_info",
+    "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0070\/7032\/files\/2010_6_23_Shopify-Green_256x256.jpg",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Pelico"
+      },
+      {
+        "type": "paragraph",
+        "content": "v2.0.0"
+      },
+      {
+        "type": "paragraph",
+        "content": "Beskpoke theme for Pelico. Built with Timber by Luke Bailey."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary",
+        "default": "#204a80",
+        "info": "Used for text links, and primary buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#dcdcdc",
+        "info": "Used for secondary buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_borders",
+        "label": "Borders",
+        "default": "#e5e5e5"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text",
+        "default": "#333333"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg",
+        "label": "Background",
+        "default": "#f2f2f2"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text",
+        "label": "Text",
+        "default": "#636363"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_social_link",
+        "label": "Social media icons",
+        "default": "#bbbbbb"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "logo_use_image",
+        "label": "Use custom logo"
+      },
+      {
+        "type": "image",
+        "id": "logo.png",
+        "label": "Custom logo",
+        "max-width": 100,
+        "max-height": 200,
+        "info": "450 x 200px .png"
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Max logo width",
+        "default": "100",
+        "info": "Defined in pixels. Do not add the 'px' unit."
+      },
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "checkbox",
+        "id": "favicon_enable",
+        "label": "Use custom icon"
+      },
+      {
+        "type": "image",
+        "id": "favicon.png",
+        "label": "Icon",
+        "max-width": 32,
+        "max-height": 32,
+        "info": "32 x 32px .png required"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "footer_social_enable",
+        "label": "Show social media icons"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_newsletter_enable",
+        "label": "Show newsletter field"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_form_action",
+        "label": "MailChimp form action URL",
+        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_address",
+        "label": "Address"
+      }
+    ]
+  },
+  {
+    "name": "Cart page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_vendor_enable",
+        "label": "Show product vendor"
+      },
+      {
+        "type": "select",
+        "id": "ajax_cart_method",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Home page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Landing"
+      },
+      {
+        "type": "text",
+        "id": "landing_tagline",
+        "label": "Tag line"
+      },
+      {
+        "type": "checkbox",
+        "id": "landing_btn_enable",
+        "label": "Show CTA"
+      },
+      {
+        "type": "text",
+        "id": "landing_btn_text",
+        "label": "CTA Text"
+      },
+      {
+        "type": "text",
+        "id": "landing_btn_link",
+        "label": "CTA Link"
+      },
+      {
+        "type": "checkbox",
+        "id": "landing_video_enable",
+        "label": "Enable CTA Link Video"
+      },
+      {
+        "type": "image",
+        "id": "hero.png",
+        "label": "landing_bg_image"
+      },
+      {
+        "type": "header",
+        "content": "About"
+      },
+      {
+        "type": "text",
+        "id": "about_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "about_sub_title",
+        "label": "Sub-title"
+      },
+      {
+        "type": "textarea",
+        "id": "about_body",
+        "label": "Body"
+      },
+      {
+        "type": "text",
+        "id": "about_cta_1_link_text",
+        "label": "Primary CTA Text"
+      },
+      {
+        "type": "text",
+        "id": "about_cta_1_link",
+        "label": "Primary CTA Link"
+      },
+      {
+        "type": "text",
+        "id": "about_cta_2_link_text",
+        "label": "Secondary CTA Text"
+      },
+      {
+        "type": "text",
+        "id": "about_cta_2_link",
+        "label": "Secondary CTA Link"
+      },
+      {
+        "type": "header",
+        "content": "How it works"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_hiw",
+        "label": "Enable How it Works"
+      },
+      {
+        "type": "text",
+        "id": "hiw_title",
+        "label": "How it Works Section Title"
+      },
+      {
+        "type": "header",
+        "content": "How it Works: Card 1"
+      },
+      {
+        "type": "text",
+        "id": "hiw_1_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw_1_body",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "How it Works: Card 2"
+      },
+      {
+        "type": "text",
+        "id": "hiw_2_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw_2_body",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "How it Works: Card 3"
+      },
+      {
+        "type": "text",
+        "id": "hiw_3_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "hiw_3_body",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "How it Works CTA"
+      },
+      {
+        "type": "text",
+        "id": "hiw_link_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "hiw_link",
+        "label": "Button Link"
+      }
+    ]
+  },
+  {
+    "name": "Jobs Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Kitchen Team"
+      },
+      {
+        "type": "text",
+        "id": "join_kitchen_title",
+        "label": "Job Title"
+      },
+      {
+        "type": "textarea",
+        "id": "join_kitchen_desc",
+        "label": "Job Description"
+      },
+      {
+        "type": "image",
+        "id": "kitchen_team.png",
+        "label": "Image",
+        "info": "450x200px"
+      },
+      {
+        "type": "header",
+        "content": "Delivery Team"
+      },
+      {
+        "type": "text",
+        "id": "join_delivery_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "join_delivery_desc",
+        "label": "Job Description"
+      },
+      {
+        "type": "image",
+        "id": "driver_team.png",
+        "label": "Image",
+        "info": "450x200px"
+      }
+    ]
+  },
+  {
+    "name": "About Page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_leader_team",
+        "label": "Enable Leader Team Section"
+      },
+      {
+        "type": "text",
+        "id": "leader_team_title",
+        "label": "Leader Team Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_kitchen_team",
+        "label": "Enable Kitchen Team Section"
+      },
+      {
+        "type": "text",
+        "id": "kitchen_team_title",
+        "label": "Kitchen Team Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_delivery_team",
+        "label": "Enable Delivery Team Section"
+      },
+      {
+        "type": "text",
+        "id": "delivery_team_title",
+        "label": "Delivery Team Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_suppliers",
+        "label": "Enable Suppliers Section"
+      }
+    ]
+  },
+  {
+    "name": "Delivery Slots",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Delivery Slots"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_delivery_time",
+        "label": "Enable Delivery Slots"
+      },
+      {
+        "type": "header",
+        "content": "Service 1",
+        "info": "A sevice is a group of slots, eg. evening or lunch"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_service_1",
+        "label": "Enable Delivery Service 1"
+      },
+      {
+        "type": "text",
+        "id": "service_1_title",
+        "label": "Delivery Service 1 Name\/Vendor",
+        "info": "To include a product in this service, the products Vendor must match this name"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_1_start",
+        "label": "Delivery Slot 1 Start Time",
+        "info": "Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_1_end",
+        "label": "Delivery Slot 1 End Time",
+        "info": "Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_2_start",
+        "label": "Delivery Slot 2 Start Time",
+        "info": "This on demand option will be shown from this time.Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_2_end",
+        "label": "Delivery Slot 2 End Time",
+        "info": "This on demand option will be shown until this time. Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_3_start",
+        "label": "Delivery Slot 3 Start Time",
+        "info": "This on demand option will be shown from this time.Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_3_end",
+        "label": "Delivery Slot 3 End Time",
+        "info": "This on demand option will be shown until this time. Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_4_start",
+        "label": "Delivery Slot 4 Start Time",
+        "info": "This on demand option will be shown from this time.Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_1_slot_4_end",
+        "label": "Delivery Slot 4 End Time",
+        "info": "This on demand option will be shown until this time. Format: 18:35"
+      },
+      {
+        "type": "checkbox",
+        "id": "service_1_od",
+        "label": "Enable On Demand"
+      },
+      {
+        "type": "text",
+        "id": "service_1_od_label",
+        "label": "On demand label",
+        "info": "This will be the text displayed in the dropdown"
+      },
+      {
+        "type": "text",
+        "id": "service_1_od_start",
+        "label": "On Demand Start Time",
+        "info": "This on demand option will be shown from this time. Format: 16:00"
+      },
+      {
+        "type": "text",
+        "id": "service_1_od_end",
+        "label": "On Demand End Time",
+        "info": "This on demand option will be shown until this time. Format: 16:00"
+      },
+      {
+        "type": "header",
+        "content": "Service 2",
+        "info": "A sevice is a group of slots, eg. evening or lunch"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_service_2",
+        "label": "Enable Delivery Service 2"
+      },
+      {
+        "type": "text",
+        "id": "service_2_title",
+        "label": "Delivery Slot 2 Name\/Vendor",
+        "info": "To include a product in this slot, the products Vendor must match this name"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_1_start",
+        "label": "Delivery Slot 1 Start Time",
+        "info": "Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_1_end",
+        "label": "Delivery Slot 1 End Time",
+        "info": "Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_2_start",
+        "label": "Delivery Slot 2 Start Time",
+        "info": "Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_2_end",
+        "label": "Delivery Slot 2 End Time",
+        "info": "Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_3_start",
+        "label": "Delivery Slot 3 Start Time",
+        "info": "Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_3_end",
+        "label": "Delivery Slot 3 End Time",
+        "info": "Format: 18:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_4_start",
+        "label": "Delivery Slot 4 Start Time",
+        "info": "Format: 16:35"
+      },
+      {
+        "type": "text",
+        "id": "service_2_slot_4_end",
+        "label": "Delivery Slot 4 End Time",
+        "info": "Format: 18:35"
+      },
+      {
+        "type": "checkbox",
+        "id": "service_2_od",
+        "label": "Enable On Demand"
+      },
+      {
+        "type": "text",
+        "id": "service_2_od_label",
+        "label": "On Demand label",
+        "info": "This will be the text displayed in the dropdown"
+      },
+      {
+        "type": "text",
+        "id": "service_2_od_start",
+        "label": "On Demand Start Time",
+        "info": "Format: 16:00"
+      },
+      {
+        "type": "text",
+        "id": "service_2_od_end",
+        "label": "On Demand End Time",
+        "info": "Format: 16:00"
+      },
+      {
+        "type": "header",
+        "content": "All Day Service",
+        "info": "This service is a combination of all other services"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_service_all_day",
+        "label": "Enable All Day Service"
+      },
+      {
+        "type": "text",
+        "id": "service_all_day_title",
+        "label": "All Day Service Title",
+        "info": "To include a product in this slot, the products Vendor must match this name"
+      }
+    ]
+  },
+  {
+    "name": "Today's Menu",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Todays Menu"
+      },
+      {
+        "type": "text",
+        "id": "menu_service_time",
+        "label": "Service time text",
+        "info": "Displayed next to header"
+      },
+      {
+        "type": "text",
+        "id": "menu_delivery_price",
+        "label": "Delivery price text",
+        "info": "Displayed next to header"
+      },
+      {
+        "type": "checkbox",
+        "id": "drinks_enable",
+        "label": "Enable Drinks Menu",
+        "info": "Products in the Drinks collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
+        "id": "sides_enable",
+        "label": "Enable Sides Menu",
+        "info": "Products in the Sides collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
+        "id": "desserts_enable",
+        "label": "Enable Desserts Menu",
+        "info": "Products in the Desserts collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
+        "id": "sauces_enable",
+        "label": "Enable Sauces Menu",
+        "info": "Products in the Sauces collection will be displayed here."
+      },
+      {
+        "type": "number",
+        "id": "low_stock_alert",
+        "label": "Low stock threshold",
+        "info": "Show the low stock warning when a products stock falls below this number. Set to 0 to disable."
+      }
+    ]
+  },
+  {
+    "name": "Testimonials",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Testimonials"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_testimonial",
+        "label": "Enable Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "testimonial_title",
+        "label": "Testimonial Section Title"
+      },
+      {
+        "type": "textarea",
+        "id": "testimonial_body",
+        "label": "Testimonial Section Text"
+      }
+    ]
+  },
+  {
+    "name": "Location",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Location"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_location",
+        "label": "Enable Location"
+      },
+      {
+        "type": "text",
+        "id": "location_title",
+        "label": "Location Section Title"
+      },
+      {
+        "type": "text",
+        "id": "location_h3",
+        "label": "Primary Sub-title"
+      },
+      {
+        "type": "text",
+        "id": "location_h4",
+        "label": "Seconday Sub-title"
+      },
+      {
+        "type": "textarea",
+        "id": "location_body",
+        "label": "Location Section Text"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter URL",
+        "info": "https:\/\/twitter.com\/PelicoXyz"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook URL",
+        "info": "https:\/\/www.facebook.com\/pelicoxyz\/"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram URL",
+        "info": "https:\/\/www.instagram.com\/pelico.bristol\/"
+      }
+    ]
+  }
+]

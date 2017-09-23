@@ -1,0 +1,143 @@
+<!-- /templates/collection.lunch-club.liquid -->
+{% comment %}
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+{% endcomment %}
+
+{% paginate collection.products by 12 %}
+<div class="break-bar">
+  
+</div>
+<div class="grid">
+  <div class="grid__item large--two-thirds push--large--one-sixth">
+    
+    {% comment %}
+      Different markup if a collection description exists
+    {% endcomment %}
+    {% if collection.description != blank %}
+      <header class="section-header">
+        <h1 class="text-center section-header__title">{{ collection.title }}</h1>
+        <div class="text-center rte rte--header">
+          {{ collection.description }}
+        </div>
+      </header>
+      <hr>
+      <div class="section-header">
+        <div class="section-header__right">
+          {% include 'collection-sorting' %}
+        </div>
+      </div>
+    {% else %}
+      <header class="section-header">
+        <h1 class="text-center section-header__title section-header__left">{{ collection.title }}</h1>
+      </header>
+    {% endif %}
+
+    {% comment %}
+      Use class grid-uniform to have evenly sized columns clear
+      each other properly at each breakpoint.
+    {% endcomment %}
+    <div class="grid-uniform">
+
+      {% comment %}
+        Loop through our products in the current collection.
+        See the snippet 'product-grid-item' for the layout.
+      {% endcomment %}
+      {% for product in collection.products %}
+
+        {% include 'product-grid-item' %}
+
+      {% else %}
+
+        {% if collection.handle == 'all' and current_tags == '' %}
+
+          {% comment %}
+            Add default products to help with onboarding for collections/all only
+          {% endcomment %}
+          {% unless emptyState %}
+            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+            {% assign emptyState = true %}
+          {% endunless %}
+          {% include 'onboarding-empty-collection' %}
+
+        {% else %}
+
+          {% comment %}
+            If collection exists but is empty, display message
+          {% endcomment %}
+          <div class="grid__item">
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <hr>
+      <div class="pagination">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+      </div>
+    {% endif %}
+    
+  </div>
+
+</div>
+<div class="break-bar">
+  
+</div>
+  <div id="second-bar" class="section">
+    
+    <div class="grid">
+      <!-- Loop 3 times for each how? card -->
+      
+      <!-- Create var for each item -->
+      
+      
+      <h2 class="text-center">How the Lunch Club works</h2>
+      
+     
+        
+          <div class="grid__item large--one-third medium--one-whole">
+            <div class="card text-center">
+              <div class="card__header">
+                <img src="//cdn.shopify.com/s/files/1/1395/8267/t/3/assets/sb_card_1.png?14852149126734871674" alt="placeholder">
+                <h3 class="title">Choose a package</h3>
+              </div>
+              <div class="card__body">
+                Order a 30-day package that suits your needs.
+              </div>            
+            </div>
+          </div>
+          <div class="grid__item large--one-third medium--one-whole">
+            <div class="card text-center">
+              <div class="card__header">
+                <img src="//cdn.shopify.com/s/files/1/1395/8267/t/3/assets/sb_card_2.png?14852149126734871674" alt="placeholder">
+                <h3 class="title">Order Pelico</h3>
+              </div>
+              <div class="card__body">
+                Use your meal tokens to order lunch whenever you like.
+              </div>              
+            </div>
+          </div>
+          <div class="grid__item large--one-third medium--one-whole">
+            <div class="card text-center">
+              <div class="card__header">
+                <img src="//cdn.shopify.com/s/files/1/1395/8267/t/3/assets/sb_card_3.png?14852149126734871674" alt="placeholder">
+                <h3 class="title">Top-up meal tokens</h3>
+              </div>
+              <div class="card__body">
+                Simply repurchase a lunch package once your meal tokens have run out.
+              </div>
+            </div>
+          </div>    
+    </div>
+  </div>
+
+
+
+{% endpaginate %}

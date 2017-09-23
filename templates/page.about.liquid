@@ -1,0 +1,121 @@
+<!-- /templates/page.liquid -->
+<section class="about">
+	<div class="grid-uniform">
+		<div class="grid__item large--two-thirds push--large--one-sixth">
+			{{ page.metafields["global"]["Section-1"] }}
+		</div>
+	</div>
+</section>
+<section class="team mt3">
+		
+	<div class="grid-uniform">
+		<div class="grid__item large--two-thirds push--large--one-sixth">
+			{{ page.metafields["global"]["Section-2"] }}	
+		</div>
+	</div>
+	{% if settings.enable_leader_team %}
+	<div class="grid-uniform mt2">
+		<h3 class="text-center txt-green">{{ settings.leader_team_title }}</h3>
+		<div class="grid__item large--two-thirds push--large--one-sixth">			
+			<div class="grid">
+			<!-- LEADERS -->
+			<div class="grid__item large--one-third medium--one-third small--one-third team-member--leader pa3">
+				<img class="image" src="{{ page.metafields['Leader-1.Leader']['leader-image'] }}" alt="{{ page.metafields['Leader-1.Leader']['leader-name'] }}">
+				<div class="name text-center">
+					{{ page.metafields["Leader-1.Leader"]["leader-name"] }}
+				</div>
+				<div class="position text-center">
+					{{ page.metafields["Leader-1.Leader"]["leader-position"] }}
+				</div>
+			</div>
+
+			<div class="grid__item large--one-third medium--one-third small--one-third team-member--leader pa3">
+				<img class="image" src="{{ page.metafields['Leader-2.Leader']['leader-image'] }}" alt="{{ page.metafields['Leader-2.Leader']['leader-name'] }}">
+				<div class="name text-center">
+					{{ page.metafields["Leader-2.Leader"]["leader-name"] }}
+				</div>
+				<div class="position text-center">
+					{{ page.metafields["Leader-2.Leader"]["leader-position"] }}
+				</div>
+			</div>
+			
+			<div class="grid__item large--one-third medium--one-third small--one-third team-member--leader pa3">
+				<img class="image" src="{{ page.metafields['Leader-3.Leader']['leader-image'] }}" alt="{{ page.metafields['Leader-3.Leader']['leader-name'] }}">
+				<div class="name text-center">
+					{{ page.metafields["Leader-3.Leader"]["leader-name"] }}
+				</div>
+				<div class="position text-center">
+					{{ page.metafields["Leader-3.Leader"]["leader-position"] }}
+				</div>
+			</div>
+
+		</div>	 <!-- // LEADERS 1-->
+		<div class="grid">
+
+			<div class="grid__item large--one-third push--large--one-sixth push--medium--one-sixth medium--one-third small--one-third team-member--leader pa3">
+				<img class="image" src="{{ page.metafields['Leader-4.Leader']['leader-image'] }}" alt="{{ page.metafields['Leader-4.Leader']['leader-name'] }}">
+				<div class="name text-center">
+					{{ page.metafields["Leader-4.Leader"]["leader-name"] }}
+				</div>
+				<div class="position text-center">
+					{{ page.metafields["Leader-4.Leader"]["leader-position"] }}
+				</div>
+			</div>
+
+			<div class="grid__item large--one-third push--large--one-sixth push--medium--one-sixth medium--one-third small--one-third team-member--leader pa3">
+				<img class="image" src="{{ page.metafields['Leader-5.Leader']['leader-image'] }}" alt="{{ page.metafields['Leader-5.Leader']['leader-name'] }}">
+				<div class="name text-center">
+					{{ page.metafields["Leader-5.Leader"]["leader-name"] }}
+				</div>
+				<div class="position text-center">
+					{{ page.metafields["Leader-5.Leader"]["leader-position"] }}
+				</div>
+			</div>
+
+		</div>	<!-- // LEADERS 2-->
+	</div>
+	</div>
+	{% endif %}
+	{% if settings.enable_kitchen_team %}
+	<div class="grid mt3">
+		
+		<!-- KITCHEN -->
+		<h3 class="text-center txt-green">{{ settings.kitchen_team_title }}</h3>
+		<div class="grid__item large--two-thirds push--large--one-sixth">
+			{{ page.metafields["global"]["Kitchen-Team"] }}
+		</div>
+		
+	</div>
+	{% endif %}
+	{% if settings.enable_delivery_team %}
+	<div class="grid mt3">
+		
+		<!-- KITCHEN -->
+		<h3 class="text-center txt-green">{{ settings.delivery_team_title }}</h3>
+		
+		<div class="grid__item large--two-thirds push--large--one-sixth">
+			{{ page.metafields["global"]["Delivery-Team"] }}
+		</div>
+		
+	</div>
+	{% endif %}
+</section>
+
+{% include 'suppliers' %}
+
+<script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+      nav: true,
+      loop: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      navText:[
+          '<i class="h3 fa fa-caret-left" aria-hidden="true"></i>',
+          '<i class="h3 fa fa-caret-right" aria-hidden="true"></i>'
+        ],
+      items: 1,
+      dots: false,
+    });
+  });
+</script>

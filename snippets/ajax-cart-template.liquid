@@ -1,0 +1,213 @@
+<!-- /snippets/ajax-cart-template.liquid -->
+{% comment %}
+
+  This snippet provides the default handlebars.js templates for
+  the ajax cart plugin. Use the raw liquid tags to keep the
+  handlebar.js template tags as available hooks.
+
+{% endcomment %}
+  <script id="CartTemplate" type="text/template">
+  {% raw %}
+    <form action="/cart" method="post" novalidate class="cart ajaxcart">
+      <div class="ajaxcart__inner">
+        {{#items}}
+        <div class="ajaxcart__product">
+          <div class="ajaxcart__row" data-line="{{line}}">
+            <div class="grid">
+              <div class="grid__item one-quarter">
+              <label class="hidden-label vendor">{{ vendor }}</label>
+                <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
+              </div>
+              <div class="grid__item three-quarters">
+                <p>
+                  <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
+                  {{#if variation}}
+                    <span class="ajaxcart__product-meta">{{variation}}</span>
+                  {{/if}}
+                  {{#properties}}
+                    {{#each this}}
+                      {{#if this}}
+                        <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                      {{/if}}
+                    {{/each}}
+                  {{/properties}}
+                  {% endraw %}{% if settings.cart_vendor_enable %}{% raw %}
+                    <span class="ajaxcart__product-meta">{{ vendor }}</span>
+                  {% endraw %}{% endif %}{% raw %}
+                </p>
+
+                <div class="grid--full display-table">
+                  <div class="grid__item display-table-cell one-half">
+                    <div class="ajaxcart__qty">
+                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text" data-id="{{key}}" data-qty="{{itemMinus}}" data-line="{{line}}">
+                        <span class="icon icon-minus" aria-hidden="true"></span>
+                        <span class="fallback-text" aria-hidden="true">&minus;</span>
+                        <span class="visually-hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
+                      </button>
+                      <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*">
+                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{key}}" data-line="{{line}}" data-qty="{{itemAdd}}">
+                        <span class="icon icon-plus" aria-hidden="true"></span>
+                        <span class="fallback-text" aria-hidden="true">+</span>
+                        <span class="visually-hidden">{% endraw %}{{ 'cart.general.increase_quantity' | t }}{% raw %}</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="grid__item display-table-cell one-half text-right">
+                    {{#if discountsApplied}}
+                      <small class="ajaxcart-item__price-strikethrough"><s>{{{originalLinePrice}}}</s></small>
+                      <br><span>{{{linePrice}}}</span>
+                    {{else}}
+                      <span>{{{linePrice}}}</span>
+                    {{/if}}
+                    </div>
+                  </div>
+                  {{#if discountsApplied}}
+                    <div class="grid--full display-table">
+                      <div class="grid__item text-right">
+                        {{#each discounts}}
+                          <small class="ajaxcart-item__discount">{{ this.title }}</small><br>
+                        {{/each}}
+                      </div>
+                    </div>
+                  {{/if}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/items}}
+        <div id="cart-error-message">Please make sure all fields are completed</div>
+        <div class="grid--full display-table">
+          <div class="grid__item vat display-table-cell">
+            <div id="cutleryWrap" class="grid--full display-table ">
+                <a href="/collections/todays-menu/products/compostable-cutlery-pack">Need Cutlery?<br>Add it here</a>
+            </div>
+          </div>
+          <div class="grid__item display-table-cell three-quarters">
+            <div id="deliveryWrap" class="grid--full display-table">
+              <div class="cart-attribute__field">
+                <label class="delivery-slot-label">Delivery Slot</label><br>
+                {% endraw %}          
+                <div id="delivery-slot">
+                  {% if settings.enable_service_1 %}
+                  <!-- Serivce 1 -->
+                  {% if settings.service_1_od %}
+                    <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_1_title }}_od on-demand" data-service="1" data-type="od" data-start="{{ settings.service_1_od_start }}" data-end="{{ settings.service_1_od_end }}"  value="ON DEMAND"><span>{{ settings.service_1_od_label }}</span><br></div>
+                  {% endif %}
+                  
+                  {% if settings.service_1_slot_1_start %}
+                    <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_1_title }} {{ settings.service_1_title }}-1" data-type="s" data-service="1" data-start="{{ settings.service_1_slot_1_start }}" value="{{ settings.service_1_slot_1_start }} - {{ settings.service_1_slot_1_end }}"><span>{{ settings.service_1_slot_1_start }} - {{ settings.service_1_slot_1_end }}</span><br></div>
+                  {% endif %} 
+                  {% if settings.service_1_slot_2_start %}
+                    <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_1_title }} {{ settings.service_1_title }}-2" data-type="s" data-service="1" data-start="{{ settings.service_1_slot_2_start }}" value="{{ settings.service_1_slot_2_start }} - {{ settings.service_1_slot_2_end }}"><span>{{ settings.service_1_slot_2_start }} - {{ settings.service_1_slot_2_end }}</span><br></div>
+                  {% endif %} 
+                  {% if settings.service_1_slot_3_start %}                  
+                  <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_1_title }} {{ settings.service_1_title }}-3" data-type="s" data-service="1" data-start="{{ settings.service_1_slot_3_start }}" value="{{ settings.service_1_slot_3_start }} - {{ settings.service_1_slot_3_end }}"><span>{{ settings.service_1_slot_3_start }} - {{ settings.service_1_slot_3_end }}</span><br></div>
+                  {% endif %}
+
+                  {% if settings.service_1_slot_4_start %}
+                  <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_1_title }} {{ settings.service_1_title }}-4" data-type="s" data-service="1" data-start="{{ settings.service_1_slot_4_start }}" value="{{ settings.service_1_slot_4_start }} - {{ settings.service_1_slot_4_end }}"><span>{{ settings.service_1_slot_4_start }} - {{ settings.service_1_slot_4_end }}</span><br></div>
+                  {% endif %}
+                {% endif %}
+                {% if settings.enable_service_2 %}
+                  <!-- Service 2 -->
+                  {% if settings.service_2_od %}
+                    <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_2_title }}_od on-demand" data-type="od" data-service="2" data-start="{{ settings.service_2_od_start }}" data-end="{{ settings.service_2_od_end }}" value="ON DEMAND"><span>{{ settings.service_2_od_label }}</span><br></div>
+                  {% endif %}
+                  {% if settings.service_2_slot_1_start %}
+                  <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_2_title }} {{ settings.service_2_title }}-1" data-type="s" data-service="2" data-start="{{ settings.service_2_slot_1_start }}" value="{{ settings.service_2_slot_1_start }} - {{ settings.service_2_slot_1_end }}"><span>{{ settings.service_2_slot_1_start }} - {{ settings.service_2_slot_1_end }}</span><br></div>
+                  {% endif %}
+                  {% if settings.service_2_slot_2_start %}
+                  <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_2_title }} {{ settings.service_2_title }}-2" data-type="s" data-service="2" data-start="{{ settings.service_2_slot_2_start }}" value="{{ settings.service_2_slot_2_start }} - {{ settings.service_2_slot_2_end }}"><span>{{ settings.service_2_slot_2_start }} - {{ settings.service_2_slot_2_end }}</span><br></div>
+                  {% endif %}
+                  {% if settings.service_2_slot_3_start %}
+                  <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_2_title }} {{ settings.service_2_title }}-3" data-type="s" data-service="2" data-start="{{ settings.service_2_slot_3_start }}" value="{{ settings.service_2_slot_3_start }} - {{ settings.service_2_slot_3_end }}"><span>{{ settings.service_2_slot_3_start }} - {{ settings.service_2_slot_3_end }}</span><br></div>
+                  {% endif %}
+                 {% if settings.service_2_slot_2_start %}
+                 <div class="slot-wrap"><input required type="radio" name="attributes[Delivery Slot]" class="required {{ settings.service_2_title }} {{ settings.service_2_title }}-4" data-type="s" data-service="2" data-start="{{ settings.service_2_slot_4_start }}" value="{{ settings.service_2_slot_4_start }} - {{ settings.service_2_slot_4_end }}"><span>{{ settings.service_2_slot_4_start }} - {{ settings.service_2_slot_4_end }}</span><br></div>
+                 {% endif %}
+                {% endif %}
+
+                </div>
+                {% raw %}
+                
+              </div>
+            </div>
+          </div>
+        </div>
+   <!--      <div class="grid--full display-table mt2">
+          <div class="grid__item display-table-cell one-whole">
+           <form action="/" method="post" id="postcodeChecker-cart" name="postcodeChecker-cart" target="_blank" class="input-group">
+               <input type="postcode" placeholder="postcode" name="postcode" class="required postcode" id="postcodeChecker-cart_postcode">
+               <input type="submit" class="btn" name="subscribe" id="postcodeChecker-cart_submit" value="Check postcode">
+           </form>      
+          </div>
+        </div>
+    -->       
+        
+          
+
+        {% endraw %}{% if settings.cart_notes_enable %}{% raw %}
+          <div>
+            <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
+            <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ note }}</textarea>
+          </div>
+        {% endraw %}{% endif %}{% raw %}
+      </div>
+      <div class="ajaxcart__footer">
+        <div class="grid--full">
+          <div class="grid__item two-thirds">
+            <p>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
+          </div>
+          <div class="grid__item one-third text-right">
+            <p>{{{totalPrice}}}</p>
+          </div>
+          {{#if totalCartDiscount}}
+            <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
+          {{/if}}
+        </div>
+        <button type="submit" class="btn btn--full cart__checkout" name="checkout">
+          {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} &rarr;
+        </button>
+        {% endraw %}{% if additional_checkout_buttons %}
+          <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
+        {% endif %}{% raw %}
+      </div>
+    </form>
+  {% endraw %}
+  </script>
+  <script id="AjaxQty" type="text/template">
+  {% raw %}
+    <div class="ajaxcart__qty">
+      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text" data-id="{{key}}" data-qty="{{itemMinus}}">
+        <span class="icon icon-minus" aria-hidden="true"></span>
+        <span class="fallback-text" aria-hidden="true">&minus;</span>
+        <span class="visually-hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
+      </button>
+      <input type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*">
+      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{key}}" data-qty="{{itemAdd}}">
+        <span class="icon icon-plus" aria-hidden="true"></span>
+        <span class="fallback-text" aria-hidden="true">+</span>
+        <span class="visually-hidden">{% endraw %}{{ 'cart.general.increase_quantity' | t }}{% raw %}</span>
+      </button>
+    </div>
+  {% endraw %}
+  </script>
+  <script id="JsQty" type="text/template">
+  {% raw %}
+    <div class="js-qty">
+      <button type="button" class="js-qty__adjust js-qty__adjust--minus icon-fallback-text" data-id="{{key}}" data-qty="{{itemMinus}}">
+        <span class="icon icon-minus" aria-hidden="true"></span>
+        <span class="fallback-text" aria-hidden="true">&minus;</span>
+        <span class="visually-hidden">{% endraw %}{{ 'cart.general.reduce_quantity' | t }}{% raw %}</span>
+      </button>
+      <input type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
+      <button type="button" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text" data-id="{{key}}" data-qty="{{itemAdd}}">
+        <span class="icon icon-plus" aria-hidden="true"></span>
+        <span class="fallback-text" aria-hidden="true">+</span>
+        <span class="visually-hidden">{% endraw %}{{ 'cart.general.increase_quantity' | t }}{% raw %}</span>
+      </button>
+    </div>
+  {% endraw %}
+  </script>
