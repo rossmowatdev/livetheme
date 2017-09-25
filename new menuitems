@@ -1,0 +1,24 @@
+{
+  "type": "checkbox",
+  "id": "drinks_enable",
+  "label": "Enable Drinks Menu",
+  "info": "Products in the Drinks collection will be displayed here."
+},
+{
+  "type": "checkbox",
+  "id": "sides_enable",
+  "label": "Enable Sides Menu",
+  "info": "Products in the Sides collection will be displayed here."
+},
+{
+  "type": "checkbox",
+  "id": "desserts_enable",
+  "label": "Enable Desserts Menu",
+  "info": "Products in the Desserts collection will be displayed here."
+},
+{
+  "type": "checkbox",
+  "id": "sauces_enable",
+  "label": "Enable Sauces Menu",
+  "info": "Products in the Sauces collection will be displayed here."
+},

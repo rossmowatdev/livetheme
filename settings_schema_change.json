@@ -1,0 +1,8 @@
+add around line 650
+
+{
+  "type": "checkbox",
+  "id": "mealsboxes_enable",
+  "label": "Enable Meals/Boxes Menu",
+  "info": "Products in the Meals/Boxes collection will be displayed here."
+},
