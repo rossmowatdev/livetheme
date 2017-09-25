@@ -74,7 +74,7 @@ assets/old--timber.js.liquid:
 assets/order.svg:
   development: 2017-04-20T22:19:46+01:00   48bddccd7a35505c9897b6248ace6aed
 assets/password.scss.liquid:
-  development: 2017-04-22T10:39:50+01:00   05191dec37762782a5f71360d1e50f71
+  development: 2017-09-23T19:23:41+01:00   c46e3c3400e51a40b0a50088db605e43
 assets/respond-proxy.html:
   development: 2016-09-16T22:37:40+01:00   75002d74a330bff6bf069284da503b4c
 assets/respond.min.js:
@@ -134,9 +134,9 @@ assets/timber.scss.liquid:
 assets/tree.svg:
   development: 2017-04-20T22:19:55+01:00   e243779b1c9c3d3a4634e142054dfa5c
 config/settings_data.json:
-  development: 2017-09-18T08:06:10+01:00   bba90747189fbf05166803c3a9b9ade2
+  development: 2017-09-23T18:06:45+01:00   565f2c8b94be868504302c61ade1a02b
 config/settings_schema.json:
-  development: 2017-09-07T22:10:16+01:00   3270bdfd4238b7432f868c7354c91d35
+  development: 2017-09-23T17:10:21+01:00   dd0cda3a0677efcbe3854f2b2d3598a0
 layout/password.liquid:
   development: 2016-09-17T16:23:26+01:00   a3b549b86f3c0200283a7d22191961b0
 layout/theme-old.liquid:
@@ -184,7 +184,7 @@ snippets/location.liquid:
 snippets/menu-block-1.liquid:
   development: 2017-04-20T22:19:27+01:00   33989c76e328f3fbc31555545fe062fa
 snippets/menu-block.liquid:
-  development: 2017-06-05T21:03:27+01:00   04fbe7c3cc3db7509fa1f264c97a45a0
+  development: 2017-09-23T17:33:12+01:00   25cc8836609110ad76045e2323152893
 snippets/oldIE-js.liquid:
   development: 2016-09-16T22:37:40+01:00   1197cc7109944206a600ed5caaef6a6f
 snippets/onboarding-empty-collection.liquid:
@@ -250,7 +250,7 @@ templates/collection.lunch-club.liquid:
 templates/collection.todays-menu.liquid:
   development: 2016-10-04T20:41:18+01:00   4c4c8e56dd7741be713706767487a722
 templates/collection.todays.liquid:
-  development: 2017-05-14T22:50:01+01:00   a131aece6838f27ecd9a599e5af7031e
+  development: 2017-09-23T17:23:54+01:00   4ec34515b775454ca9b4bd3fc98bb2a3
 templates/customers/account.liquid:
   development: 2017-04-23T10:42:45+01:00   beae6ef87a0f1499d07ef97b6a1fb2fa
 templates/customers/activate_account.liquid:
@@ -284,7 +284,7 @@ templates/page.join.liquid:
 templates/page.liquid:
   development: 2017-04-20T22:19:51+01:00   997fc66b44d96851cbf0a1711d1e1064
 templates/password.liquid:
-  development: 2017-04-22T11:18:14+01:00   12ad30cd2f5eebbd997c2d1d47d82d90
+  development: 2017-09-23T18:47:26+01:00   06ed91021cc2689adf7ab40c2b086e95
 templates/product-without-spurit_po.liquid:
   development: 2016-11-05T14:01:49+00:00   0c01a456554f2af86118e6931a1b6170
 templates/product.liquid:
