@@ -650,6 +650,24 @@
       },
       {
         "type": "checkbox",
+        "id": "mealsboxes_enable",
+        "label": "Enable Meals\/Boxes Menu",
+        "info": "Products in the Meals\/Boxes collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
+        "id": "salads_enable",
+        "label": "Enable Salads Menu",
+        "info": "Products in the Salads collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
+        "id": "burgersburritoswraps_enable",
+        "label": "Enable Burger\/Burrito\/Wraps Menu",
+        "info": "Products in the Burger\/Burrito\/Wraps collection will be displayed here."
+      },
+      {
+        "type": "checkbox",
         "id": "sides_enable",
         "label": "Enable Sides Menu",
         "info": "Products in the Sides collection will be displayed here."

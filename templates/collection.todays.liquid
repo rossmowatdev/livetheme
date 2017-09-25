@@ -27,7 +27,30 @@
 
   </div>
   
-  {% if settings.desserts_enable %}
+  {% if settings.salads_enable %}
+  <article class="salads menu-bar">
+    <div class="menu-bar__header">
+      <div class="title">
+        <h3>Salads</h3>
+      </div>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform pb3">
+        {% for product in collections.salads.products %}
+
+          {% assign grid_item_width = 'large--one-half medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}        
+      </div>
+    </div>
+  </article>
+  {% endif %} 
+  
+    {% if settings.desserts_enable %}
   <article class="drinks menu-bar">
     <div class="menu-bar__header">
       <div class="title">

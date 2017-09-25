@@ -29,6 +29,55 @@
 
 	</div>
 </article>  
+   {% if settings.salads_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Salads</h2>
+        </div>
+    
+        {% for product in collections.salads.products %}
+
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}        
+      </div>
+  </article>
+  {% endif %} 
+  {% if settings.mealsboxes_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Meals/Boxes</h2>
+        </div>
+    
+        {% for product in collections.meals-boxes.products %}
+
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}        
+      </div>
+  </article>
+  {% endif %} 
+   {% if settings.burgersburritoswraps_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Burgers, Burritos & Wraps</h2>
+        </div>
+    
+        {% for product in collections.burgers-burritos-wraps.products %}
+
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}        
+      </div>
+  </article>
+  {% endif %} 
+  
   {% if settings.drinks_enable %}
   <article class="drinks">
       <div class="grid-uniform">
