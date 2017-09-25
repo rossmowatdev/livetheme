@@ -3,19 +3,19 @@
   <div class="grid-uniform">
 
   	<div class="menu__header grid__item one-whole">
-  		
+
       <h2 class="menu__title txt-green mr2">{{ 'homepage.sections.frontpage_title' | t }}</h2>
-     
+
       {% if settings.menu_service_time%}
         <h4 class="menu__service-time">{{ settings.menu_service_time }}</h4>
       {% endif %}
-      
+
       {% if settings.menu_delivery_price %}
         <h4 class="menu__delivery-price">{{ settings.menu_delivery_price }}</h4>
-      {% endif %}  
+      {% endif %}
 
   	</div>
-  
+
   </div>
 	<div class="grid-uniform">
 
@@ -28,72 +28,49 @@
 	  {% endfor %}
 
 	</div>
-</article>  
-   {% if settings.salads_enable %}
+</article>
+
+  {% if settings.mealsboxes_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Rice Boxes</h2>
+        </div>
+        {% for product in collections.meals-boxes.products %}
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
+  </article>
+  {% endif %}
+
+   {% if settings.burgersburritoswraps_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Wraps & Burgers</h2>
+        </div>
+        {% for product in collections.burgers-burritos-wraps.products %}
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
+  </article>
+  {% endif %}
+
+  {% if settings.salads_enable %}
   <article class="drinks">
       <div class="grid-uniform">
         <div class=" grid__item one-whole">
           <h2 class="txt-green">Salads</h2>
         </div>
-    
         {% for product in collections.salads.products %}
-
           {% assign grid_item_width = 'large--one-half' %}
           {% include 'product-grid-item' %}
-
-        {% endfor %}        
+        {% endfor %}
       </div>
   </article>
-  {% endif %} 
-  {% if settings.mealsboxes_enable %}
-  <article class="drinks">
-      <div class="grid-uniform">
-        <div class=" grid__item one-whole">
-          <h2 class="txt-green">Meals/Boxes</h2>
-        </div>
-    
-        {% for product in collections.meals-boxes.products %}
-
-          {% assign grid_item_width = 'large--one-half' %}
-          {% include 'product-grid-item' %}
-
-        {% endfor %}        
-      </div>
-  </article>
-  {% endif %} 
-   {% if settings.burgersburritoswraps_enable %}
-  <article class="drinks">
-      <div class="grid-uniform">
-        <div class=" grid__item one-whole">
-          <h2 class="txt-green">Burgers, Burritos & Wraps</h2>
-        </div>
-    
-        {% for product in collections.burgers-burritos-wraps.products %}
-
-          {% assign grid_item_width = 'large--one-half' %}
-          {% include 'product-grid-item' %}
-
-        {% endfor %}        
-      </div>
-  </article>
-  {% endif %} 
-  
-  {% if settings.drinks_enable %}
-  <article class="drinks">
-      <div class="grid-uniform">
-        <div class=" grid__item one-whole">
-          <h2 class="txt-green">Drinks</h2>
-        </div>
-    
-        {% for product in collections.drinks.products %}
-
-          {% assign grid_item_width = 'large--one-half' %}
-          {% include 'product-grid-item' %}
-
-        {% endfor %}        
-      </div>
-  </article>
-  {% endif %} 
+  {% endif %}
 
   {% if settings.sides_enable %}
   <article class="sides">
@@ -102,12 +79,24 @@
         <h2 class="txt-green">Snacks</h2>
       </div>
         {% for product in collections.snacks.products %}
-
           {% assign grid_item_width = 'large--one-half' %}
           {% include 'product-grid-item' %}
-
         {% endfor %}
-      </div>  
+      </div>
+  </article>
+  {% endif %}
+
+  {% if settings.drinks_enable %}
+  <article class="drinks">
+      <div class="grid-uniform">
+        <div class=" grid__item one-whole">
+          <h2 class="txt-green">Drinks</h2>
+        </div>
+        {% for product in collections.drinks.products %}
+          {% assign grid_item_width = 'large--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
   </article>
   {% endif %}
 
@@ -117,7 +106,7 @@
         <div class=" grid__item one-whole">
           <h2 class="txt-green">Desserts</h2>
         </div>
-      
+
         {% for product in collections.desserts.products %}
 
           {% assign grid_item_width = 'large--one-half' %}
