@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="8px" viewBox="0 0 15 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="full-width-bar/down" fill="#4E4E4E">
+            <path d="M6.00335189,4.22999954 L10.7935429,-1.4804152 C11.1191473,-1.88002063 11.0591576,-2.46791937 10.6595522,-2.79352379 C10.2599468,-3.11912821 9.67204802,-3.05913855 9.3464436,-2.65953312 L4.2131317,3.64044058 C3.93342529,3.98371663 3.93342529,4.47628246 4.2131317,4.8195585 L9.3464436,11.1195322 C9.67204802,11.5191376 10.2599468,11.5791273 10.6595522,11.2535229 C11.0591576,10.9279185 11.1191473,10.3400197 10.7935429,9.94041428 L6.00335189,4.22999954 Z" id="Path" transform="translate(7.503352, 4.230000) rotate(-90.000000) translate(-7.503352, -4.230000) "></path>
+        </g>
+    </g>
+</svg>
