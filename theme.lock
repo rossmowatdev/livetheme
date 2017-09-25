@@ -63,6 +63,8 @@ assets/icons.woff:
   development: 2016-09-16T22:37:40+01:00   6d64bee3b4d239a6cf6af98045a95954
 assets/kitchen_image.png:
   development: 2016-12-06T21:25:38+00:00   70c8a5a790f54747de37b610b318f150
+assets/kitchen_team.png:
+  development: 2017-04-26T10:23:27+01:00   1e1deb060288e2b9c85f07e08a6de8a8
 assets/landing_image.png:
   development: 2017-03-08T10:41:39+00:00   068fef135b076d7792338c768db286a3
 assets/logo.png:
@@ -134,7 +136,7 @@ assets/timber.scss.liquid:
 assets/tree.svg:
   development: 2017-04-20T22:19:55+01:00   e243779b1c9c3d3a4634e142054dfa5c
 config/settings_data.json:
-  development: 2017-09-18T08:06:10+01:00   bba90747189fbf05166803c3a9b9ade2
+  development: 2017-09-22T12:55:41+01:00   5cd5d6a83539c4655bef28c3c5165def
 config/settings_schema.json:
   development: 2017-09-07T22:10:16+01:00   3270bdfd4238b7432f868c7354c91d35
 layout/password.liquid:
