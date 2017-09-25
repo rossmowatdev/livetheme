@@ -1,0 +1,96 @@
+<section id="menu">
+  <div class="grid-uniform">
+
+    <div class="menu__header grid__item one-whole">
+
+      <h2 class="menu__title txt-green mr2">{{ 'homepage.sections.frontpage_title' | t }}</h2>
+
+      {% if settings.menu_service_time%}
+        <h4 class="menu__service-time">{{ settings.menu_service_time }}</h4>
+      {% endif %}
+
+      {% if settings.menu_delivery_price %}
+        <h4 class="menu__delivery-price">{{ settings.menu_delivery_price }}</h4>
+      {% endif %}
+
+    </div>
+
+  </div>
+  <div class="grid-uniform">
+
+    {% for product in collections.todays-menu.products %}
+
+      {% assign grid_item_width = 'large--one-half' %}
+      {% include 'product-grid-item' %}
+
+    {% endfor %}
+
+  </div>
+
+  {% if settings.desserts_enable %}
+  <article class="drinks menu-bar">
+    <div class="menu-bar__header">
+      <div class="title">
+        <h3>Drinks</h3>
+      </div>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform pb3">
+        {% for product in collections.drinks.products %}
+
+          {% assign grid_item_width = 'large--one-half medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endif %}
+
+  {% if settings.sides_enable %}
+  <article class="sides menu-bar">
+    <div class="menu-bar__header">
+      <h3 class="title">Snacks</h3>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform">
+        {% for product in collections.snacks.products %}
+
+          {% assign grid_item_width = 'large--one-half medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endif %}
+
+  {% if settings.desserts_enable %}
+  <article class="desserts menu-bar">
+    <div class="menu-bar__header">
+      <div class="title">
+        <h3>Desserts</h3>
+      </div>
+      <div class="toggle">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="menu-bar__content">
+      <div class="grid-uniform">
+        {% for product in collections.desserts.products %}
+
+          {% assign grid_item_width = 'large--one-half medium--one-half small--one-whole' %}
+          {% include 'product-grid-item' %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endif %}
+</section>
